@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.samsung.android.baseball.TitleFragment"
+        android:label="Baseball Game"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.samsung.android.baseball.GameFragment"
+        android:label="Baseball Game"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_gameWonFragment"
+            app:destination="@id/gameWonFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameWonFragment"
+        android:name="com.samsung.android.baseball.GameWonFragment"
+        android:label="You Won"
+        tools:layout="@layout/fragment_game_won">
+        <argument
+            android:name="count"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gameWonFragment_to_titleFragment"
+            app:destination="@id/titleFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameOverFragment"
+        android:name="com.samsung.android.baseball.GameOverFragment"
+        android:label="Game Over"
+        tools:layout="@layout/fragment_game_over">
+        <argument
+            android:name="numbers"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_gameOverFragment_to_titleFragment"
+            app:destination="@id/titleFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.samsung.android.baseball.RulesFragment"
+        android:label="How to play"
+        tools:layout="@layout/fragment_rules" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.samsung.android.baseball.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+</navigation>
